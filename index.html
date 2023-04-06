@@ -10,11 +10,22 @@
     </style>
 </head>
 <body>
-    <h1>Something heere</h1>
+    <h1 id="timer"></h1>
 
     <script>
-        const time = new Date()
-        console.log(time)
-    </script>
+        const startDate = new Date("Thu Apr 06 2023 20:07:21 GMT+0300"); // set the start date
+        const timerElement = document.getElementById("timer");
+  
+        setInterval(() => {
+          const timeElapsed = new Date() - startDate; // calculate the time elapsed in milliseconds
+  
+          const seconds = Math.floor((timeElapsed / 1000) % 60);
+          const minutes = Math.floor((timeElapsed / (1000 * 60)) % 60);
+          const hours = Math.floor((timeElapsed / (1000 * 60 * 60)) % 24);
+          const days = Math.floor(timeElapsed / (1000 * 60 * 60 * 24));
+  
+          timerElement.innerText = `Time elapsed: ${days}d ${hours}h ${minutes}m ${seconds}s`; // display the elapsed time in the h1 element
+        }, 1000); // update the timer every second
+      </script>
 </body>
 </html>
